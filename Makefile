@@ -1,22 +1,22 @@
 # TODO:
-# 	[ ]给所有源文件加上文件注释。
-#	[ ]完成开发后 CFLAGS 去掉 -g。
+#   [ ]给所有源文件加上文件注释。
+#   [ ]完成开发后 CFLAGS 去掉 -g。
 #   [ ]增加电脑 AI。
 
-BIN_DIR = bin
-SRC_DIR = src
-INC_DIR = include
-OBJ_DIR = obj
+BIN_DIR	= bin
+SRC_DIR	= src
+INC_DIR	= include
+OBJ_DIR	= obj
 EXE		=  
 
 TARGET	= $(BIN_DIR)/pong$(EXE)
-SOURCES = $(wildcard $(SRC_DIR)/*.c)
+SOURCES	= $(wildcard $(SRC_DIR)/*.c)
 OBJECTS	= $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-DEPENDS = deps
+DEPENDS	= deps
 
-CC = gcc
+CC	= gcc
 CFLAGS	= -g
-LIBS = -lSDL -lSDL_mixer
+LIBS	= -lSDL -lSDL_image -lSDL_mixer
 INCLUDE	= -I$(INC_DIR)
 
 all: $(TARGET)
