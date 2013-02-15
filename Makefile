@@ -7,7 +7,7 @@ BIN_DIR	= bin
 SRC_DIR	= src
 INC_DIR	= include
 OBJ_DIR	= obj
-EXE		=  
+EXE		= .exe
 
 TARGET	= $(BIN_DIR)/pong$(EXE)
 SOURCES	= $(wildcard $(SRC_DIR)/*.c)
@@ -16,7 +16,7 @@ DEPENDS	= deps
 
 CC	= gcc
 CFLAGS	= -g
-LIBS	= -lSDL -lSDL_image -lSDL_mixer
+LIBS	= -lmingw32 -lSDLmain -lSDL -lSDL_image -lSDL_mixer
 INCLUDE	= -I$(INC_DIR)
 
 all: $(TARGET)
