@@ -51,6 +51,6 @@ float line2_distance(line2_t *line, vector2_t point)
     float a, b, c, d;
     
     line2_equation(line, &a, &b, &c);
-    d = fabs(a*point.x + b*point.y + c) / sqrt(a*a + b*b);
+    d = fabs(a*point.x + b*point.y + c) / sqrtf(a*a + b*b);
     return d;
 }
