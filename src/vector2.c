@@ -31,7 +31,7 @@ float vector2_dot(vector2_t lhs, vector2_t rhs)
 
 float vector2_length(vector2_t v)
 {
-    return sqrt(v.x * v.x + v.y * v.y);
+    return sqrtf(v.x * v.x + v.y * v.y);
 }
 
 vector2_t vector2_normalize(vector2_t v)
