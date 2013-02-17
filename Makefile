@@ -16,7 +16,7 @@ DEPENDS	= deps
 
 CC	= gcc
 CFLAGS	= -g
-LIBS	= -lSDL -lSDL_image -lSDL_mixer
+LIBS	= -lm -lSDL -lSDL_image -lSDL_mixer
 INCLUDE	= -I$(INC_DIR)
 
 all: $(TARGET)
