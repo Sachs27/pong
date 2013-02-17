@@ -14,7 +14,7 @@ SOURCES	= $(wildcard $(SRC_DIR)/*.c)
 OBJECTS	= $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPENDS	= deps
 
-CC	= gcc
+CC	= i686-pc-mingw32-gcc
 CFLAGS	= -g
 LIBS	= -lmingw32 -lSDLmain -lSDL -lSDL_image -lSDL_mixer
 INCLUDE	= -I$(INC_DIR)
