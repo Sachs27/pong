@@ -21,6 +21,8 @@ INCLUDE	= -I$(INC_DIR)
 
 all: $(TARGET)
 
+run: $(TARGET)
+	cd $(BIN_DIR) && ./$(TARGET:$(BIN_DIR)/%=%)
 clean:
 	-rm -f $(DEPENDS)
 	-rm -f $(OBJECTS)
@@ -28,7 +30,7 @@ clean:
 cleanall: clean
 	-rm -f $(TARGET)
 
-.PHONY: all clean cleanall obj
+.PHONY: run all clean cleanall obj
 
 $(TARGET): obj 
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LIBS)

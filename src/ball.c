@@ -7,7 +7,8 @@
 /**
  *  static func
  */
-static int ball_collided(ball_t *ball, int *obstacle_index)
+static int
+ball_collided(ball_t *ball, int *obstacle_index)
 {
     int i;
 
@@ -26,7 +27,8 @@ static int ball_collided(ball_t *ball, int *obstacle_index)
 /**
  *  extern func
  */
-void ball_draw(ball_t *ball, SDL_Surface *dst, SDL_Rect *dst_rect)
+void
+ball_draw(ball_t *ball, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
     SDL_Rect rect;
 
@@ -38,7 +40,8 @@ void ball_draw(ball_t *ball, SDL_Surface *dst, SDL_Rect *dst_rect)
     return ;
 }
 
-void ball_move(ball_t *ball, int delta)
+void
+ball_move(ball_t *ball, int delta)
 {
     vector2_t delta_pos;
     int obstacle_index;
@@ -52,7 +55,8 @@ void ball_move(ball_t *ball, int delta)
     return ; 
 }
 
-void ball_set_obstacles(ball_t *ball, line2_t *obstacles, size_t count)
+void
+ball_set_obstacles(ball_t *ball, line2_t *obstacles, size_t count)
 {
     int i = count;
 

@@ -11,7 +11,8 @@ static int s_image_pong_ref_count = 0;
 /**
  *  static func
  */
-static void s_ball_on_collided(ball_t *ball, size_t obstacle_index)
+static void
+ball_on_collided(ball_t *ball, size_t obstacle_index)
 {
     float tmp;
     vector2_t normal;
@@ -29,7 +30,8 @@ static void s_ball_on_collided(ball_t *ball, size_t obstacle_index)
     return ;
 }
 
-static SDL_Surface *load_image_pong()
+static SDL_Surface *
+load_image_pong()
 {
     log_enter_func(__func__);
 
@@ -51,7 +53,8 @@ static SDL_Surface *load_image_pong()
     return s_image_pong;
 }
 
-static void free_image_pong()
+static void
+free_image_pong()
 {
     log_enter_func(__func__);
     --s_image_pong_ref_count;
@@ -68,7 +71,8 @@ static void free_image_pong()
  *  extern func
  */
 
-int pong_create_ball(pong_t *pong)
+int
+pong_create_ball(pong_t *pong)
 {
     log_enter_func(__func__);
 
@@ -95,7 +99,7 @@ int pong_create_ball(pong_t *pong)
     pong->ball.pos.y = pong->rect.h / 2.0f;
     pong->ball.v.x = 50.0f;
     pong->ball.v.y = 30.0f;
-    pong->ball.on_collided = s_ball_on_collided;
+    pong->ball.on_collided = ball_on_collided;
     pong->ball.radius = 10.0f;
     pong->ball.obstacle_count = 4;
     pong->ball.obstacles = (line2_t *)malloc(                                  \
@@ -130,7 +134,8 @@ int pong_create_ball(pong_t *pong)
     return 0;
 }
 
-void pong_destroy_ball(pong_t *pong)
+void
+pong_destroy_ball(pong_t *pong)
 {
     log_enter_func(__func__);
 
@@ -157,7 +162,8 @@ void pong_destroy_ball(pong_t *pong)
     return ;
 }
 
-int pong_create_player(pong_t *pong)
+int
+pong_create_player(pong_t *pong)
 {
     log_enter_func(__func__);
 
@@ -183,7 +189,8 @@ int pong_create_player(pong_t *pong)
     return 0;
 }
 
-void pong_destroy_player(pong_t *pong)
+void
+pong_destroy_player(pong_t *pong)
 {
     log_enter_func(__func__);
 
@@ -199,13 +206,15 @@ void pong_destroy_player(pong_t *pong)
     return ;
 }
 
-int pong_update(pong_t *pong, int delta)
+int
+pong_update(pong_t *pong, int delta)
 {
     ball_move(&pong->ball, delta);
     return 0;
 }
 
-int pong_render(pong_t *pong)
+int
+pong_render(pong_t *pong)
 {
     static Uint32 clear_color = 0;
     int i;

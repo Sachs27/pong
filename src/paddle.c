@@ -4,7 +4,8 @@
 
 #include "paddle.h"
 
-void paddle_draw(paddle_t *paddle, SDL_Surface *dst, SDL_Rect *dst_rect)
+void
+paddle_draw(paddle_t *paddle, SDL_Surface *dst, SDL_Rect *dst_rect)
 {
     SDL_Rect rect;
 
