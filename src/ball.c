@@ -1,7 +1,6 @@
 /**
  * ball.c
  */
-
 #include "ball.h"
 
 /**
@@ -41,7 +40,7 @@ ball_draw(ball_t *ball, SDL_Surface *dst, SDL_Rect *dst_rect)
 }
 
 void
-ball_move(ball_t *ball, int delta)
+ball_move(ball_t *ball, unsigned long delta)
 {
     vector2_t delta_pos;
     int obstacle_index;

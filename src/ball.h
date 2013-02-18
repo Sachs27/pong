@@ -1,7 +1,6 @@
 /**
  * ball.h
  */
-
 #ifndef BALL_H
 #define BALL_H
 
@@ -33,7 +32,7 @@ struct ball {
 #define ball_s sizeof(ball_t)
 
 void ball_set_obstacles(ball_t *ball, line2_t *obstacles, size_t count);
-void ball_move(ball_t *ball, int delta);
+void ball_move(ball_t *ball, unsigned long delta);
 void ball_draw(ball_t *ball, SDL_Surface *dst, SDL_Rect *dst_rect);
 
 #endif

@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 {
     pong_t pong;
     int quit;
-    Uint32 last_ticks, delta_ticks;
+    unsigned long last_ticks, delta_ticks;
     SDL_Event e;
 
     log_enter_func(__func__);

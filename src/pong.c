@@ -1,8 +1,8 @@
 /**
  * pong.c
  */
-
 #include "pong.h"
+
 #include "log.h"
 
 static SDL_Surface *s_image_pong = 0;
@@ -67,6 +67,20 @@ free_image_pong()
     return ;
 }
 
+static void
+update_ball_obstacles(pong_t *pong)
+{
+    pong->ball.obstacles[4].begin.x = pong->player.pos.x                       \
+                                      - pong->player.half_width;
+    pong->ball.obstacles[4].begin.y = pong->player.pos.y                       \
+                                      - pong->player.half_height;
+    pong->ball.obstacles[4].end.x = pong->player.pos.x                         \
+                                    + pong->player.half_height;
+    pong->ball.obstacles[4].end.y = pong->ball.obstacles[4].begin.y;
+
+    return ;
+}
+
 /**
  *  extern func
  */
@@ -101,12 +115,12 @@ pong_create_ball(pong_t *pong)
     pong->ball.v.y = 30.0f;
     pong->ball.on_collided = ball_on_collided;
     pong->ball.radius = 10.0f;
-    pong->ball.obstacle_count = 4;
+    pong->ball.obstacle_count = 5;
     pong->ball.obstacles = (line2_t *)malloc(                                  \
                             line2_s * pong->ball.obstacle_count);
     {
         int i;
-        line2_t ob[4] = {
+        line2_t ob[] = {
             {
                 {pong->rect.w-1, 0},
                 {pong->rect.w-1, pong->rect.h-1}
@@ -122,6 +136,10 @@ pong_create_ball(pong_t *pong)
             {
                 {0, pong->rect.h-1},
                 {pong->rect.w-1, pong->rect.h-1}
+            },
+            {/* paddle obstacle */
+                {0, 0},
+                {0, 0}
             }
         };
         i = pong->ball.obstacle_count;
@@ -184,6 +202,7 @@ pong_create_player(pong_t *pong)
     pong->player.half_height = 10.f;
     pong->player.pos.x = pong->rect.w / 2.f;
     pong->player.pos.y = pong->rect.h - pong->player.half_height;
+    pong->player.horizontal_speed = 100;
 
     log_leave_func(__func__);
     return 0;
@@ -207,8 +226,10 @@ pong_destroy_player(pong_t *pong)
 }
 
 int
-pong_update(pong_t *pong, int delta)
+pong_update(pong_t *pong, unsigned long delta)
 {
+    paddle_move(&pong->player, delta);
+    update_ball_obstacles(pong);
     ball_move(&pong->ball, delta);
     return 0;
 }
@@ -217,7 +238,6 @@ int
 pong_render(pong_t *pong)
 {
     static Uint32 clear_color = 0;
-    int i;
 
     if (!clear_color) {
         clear_color = SDL_MapRGB(pong->screen->format, 0xff, 0xff, 0xff);
@@ -227,6 +247,6 @@ pong_render(pong_t *pong)
     ball_draw(&pong->ball, pong->screen, &pong->rect);
     paddle_draw(&pong->player, pong->screen, &pong->rect);
     SDL_UpdateRect(pong->screen, pong->rect.x, pong->rect.y,                   \
-                           pong->rect.w, pong->rect.h);
+                                 pong->rect.w, pong->rect.h);
     return 0;
 }

@@ -1,3 +1,9 @@
+/**
+ * vector2.h
+ *
+ * TODO:
+ *   [ ]将精度改为 double
+ */
 #ifndef VECTOR2_H
 #define VECTOR2_H
 

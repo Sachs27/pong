@@ -32,8 +32,8 @@ cleanall: clean
 
 .PHONY: run all clean cleanall obj
 
-$(TARGET): obj 
-	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LIBS)
+$(TARGET): $(OBJECTS) 
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
 sinclude $(DEPENDS)
 

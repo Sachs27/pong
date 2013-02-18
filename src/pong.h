@@ -1,7 +1,6 @@
 /**
  * pong.h
  */
-
 #ifndef PONG_PONG_H
 #define PONG_PONG_H
 
@@ -23,7 +22,7 @@ int pong_create_ball(pong_t *pong);
 void pong_destroy_ball(pong_t *pong);
 int pong_create_player(pong_t *pong);
 void pong_destroy_player(pong_t *pong);
-int pong_update(pong_t *pong, int delta);
+int pong_update(pong_t *pong, unsigned long delta);
 int pong_render(pong_t *pong);
 
 #endif
